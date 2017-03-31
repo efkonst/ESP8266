@@ -27,16 +27,22 @@ class Display:
                 self.image = Image.new('1', (self.width, self.height))
                 print "initialized"
 
-        
-        def drawLines(self):
-            draw = ImageDraw.Draw(self.image)
-            for i in range(1,self.height,2):
-                draw.line((0, i, self.width, i), fill=0)
-            printImage()
-        
         def printImage(self):
             self.disp.clear()
             self.disp.display()
             self.disp.image(self.image)
             self.disp.display()
 
+        def drawLines(self):
+            draw = ImageDraw.Draw(self.image)
+            for i in range(1,self.height,2):
+                draw.line((0, i, self.width, i), fill=1)
+            self.printImage()
+            
+        def drawList(self,list_):
+            draw = ImageDraw.Draw(self.image)
+            max = max(list_)
+            min = min(list_)
+            for i in range(0,128):
+                draw.line(i,Y1,i,63,fill=1)
+            self.printImage()
