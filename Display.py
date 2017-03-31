@@ -33,3 +33,18 @@ class Display:
                 draw.rectangle((0,0,self.width,self.height), outline=0, fill=1)
                 self.disp.image(image)
                 self.disp.display()
+
+        def createLines(self):
+            image = Image.new('1', (self.width, self.height))
+            draw = ImageDraw.Draw(image)
+            for i in range(1,self.height,2):
+                draw.line((0, i, self.width, i), fill=0)
+            return image
+        
+        def printImage(self,img):
+            self.disp.begin()
+            self.disp.clear()
+            self.disp.display()
+            self.disp.image(img)
+            self.disp.display()
+
