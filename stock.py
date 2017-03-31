@@ -43,6 +43,7 @@ for row in csvlist:
     if(row[4]<min):
         min = row[4]
 #print max , min
+csvlist.reverse()
 #print len(csvlist)
 j=0
 for i in range(len(csvlist)-128, len(csvlist)):

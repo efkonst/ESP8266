@@ -3,6 +3,8 @@ import Display
 
 print "hello :-)"
 d = Display.Display()
-d.printR(1)
+#d.printR(1)
+images = d.createLines()
+d.printImage(images)
 print "end"
 
