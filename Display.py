@@ -40,9 +40,13 @@ class Display:
             self.printImage()
             
         def drawList(self,list_):
+	    self.disp.clear()
             draw = ImageDraw.Draw(self.image)
-            max = max(list_)
-            min = min(list_)
-            for i in range(0,128):
-                draw.line(i,Y1,i,63,fill=1)
+            maxp = float(max(list_))
+            minp = float(min(list_))
+	    print maxp
+            for i in range(0,127):
+		val = float(list_[i])-minp
+		y1 = int( val*64/(maxp-minp))
+                draw.line( (i , (64- y1) , i, 63), fill=1)
             self.printImage()

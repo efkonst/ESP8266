@@ -10,9 +10,9 @@ class Webparser:
     
     def getmaxprices(self):
         url = 'https://www.google.com/finance/historical?output=csv&q='+self.stockname
-        proxy = urllib2.ProxyHandler({'https': '10.159.68.132:8080'})
-        opener = urllib2.build_opener(proxy)
-        urllib2.install_opener(opener)
+#        proxy = urllib2.ProxyHandler({'https': '10.159.68.132:8080'})
+#        opener = urllib2.build_opener(proxy)
+#        urllib2.install_opener(opener)
         response = urllib2.urlopen(url)
         cr = csv.reader(response)
         csvlist = list(cr)
@@ -26,7 +26,7 @@ class Webparser:
 
 
 #w = Webparser("NOK") 
-#w.getmaxprices()
+#print w.getmaxprices()
 
 '''
 stockname = "NOK"
