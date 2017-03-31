@@ -14,7 +14,7 @@ from datetime import timedelta
 
 class Display:
         def __init__(self):
-                print "initializing"
+                print "initializing Display"
                 self.width = 128
                 self.height = 64
                 self.RST = 24
@@ -29,7 +29,7 @@ class Display:
 
         def printImage(self):
             self.disp.clear()
-            self.disp.display()
+#            self.disp.display()
             self.disp.image(self.image)
             self.disp.display()
 
@@ -39,14 +39,22 @@ class Display:
                 draw.line((0, i, self.width, i), fill=1)
             self.printImage()
             
-        def drawList(self,list_):
-	    self.disp.clear()
+        def drawList(self,list_,height=None,caption = None):
+	    if height is None :
+		height = 64
             draw = ImageDraw.Draw(self.image)
+            draw.rectangle( (0,0,self.width,self.height),fill=0)
+	    if caption is not None:
+		font = ImageFont.truetype('Minecraftia-Regular.ttf', 10)
+		# Write two lines of text.
+		draw.text((3, self.height-12), caption ,  font=font, fill=1)
+
             maxp = float(max(list_))
             minp = float(min(list_))
-	    print maxp
+            print maxp
             for i in range(0,127):
-		val = float(list_[i])-minp
-		y1 = int( val*64/(maxp-minp))
-                draw.line( (i , (64- y1) , i, 63), fill=1)
+                val = float(list_[i])-minp
+                y1 = int( val*height/(maxp-minp))
+                draw.line( (i , (height- y1) , i, (height-1)), fill=1)
             self.printImage()
+
